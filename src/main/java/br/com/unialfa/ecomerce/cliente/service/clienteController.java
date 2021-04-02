@@ -29,10 +29,17 @@ public class clienteController {
         clienteRepositorio.save(clienteVariavel);
     }
 
-    @DeleteMapping(path = "/delete/{id}")
-    public @ResponseBody void deletarcliente(@PathVariable(name = "id") long id){
+    @DeleteMapping(value = "/delete/{id}")
+    public @ResponseBody void deletarCliente(@PathVariable(name = "id") long id){
+
         clienteRepositorio.deleteById(id);
     }
+    /*
+    @DeleteMapping(path = "/delete/{id}")
+    public @ResponseBody void deletarCliente(@PathVariable(name = "id") long id){
+        clienteRepositorio.deleteById(id);
+    }
+    */
 
 
 }

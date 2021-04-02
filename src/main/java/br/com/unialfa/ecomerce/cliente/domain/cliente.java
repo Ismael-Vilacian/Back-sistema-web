@@ -1,5 +1,7 @@
 package br.com.unialfa.ecomerce.cliente.domain;
 
+import com.sun.istack.Nullable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,7 @@ public class cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
+    @Nullable()
     private String nome;
     private String cpf;
     private char sexo;
