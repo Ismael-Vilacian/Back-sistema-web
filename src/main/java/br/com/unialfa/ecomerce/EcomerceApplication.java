@@ -1,5 +1,7 @@
 package br.com.unialfa.ecomerce;
 
+import br.com.unialfa.ecomerce.administrador.domain.adm;
+import br.com.unialfa.ecomerce.administrador.repositorio.admRepositorio;
 import br.com.unialfa.ecomerce.carro.domain.carro;
 import br.com.unialfa.ecomerce.carro.repositorio.carroRepositorio;
 import br.com.unialfa.ecomerce.cliente.domain.cliente;
@@ -22,10 +24,21 @@ public class EcomerceApplication {
 	@Autowired
 	private  carroRepositorio carroRepositorio;
 
+	@Autowired
+	private admRepositorio admRepositorio;
+
 	public static void main(String[] args) {
 		SpringApplication.run(EcomerceApplication.class, args);
 
 	}
+	@Bean
+	InitializingBean SendAdmDataBase(){
+		adm admAcesso = new adm();
+		admAcesso.setNome("Ismael");
+		admRepositorio.save(admAcesso);
+		return null;
+	}
+
 	@Bean
 	InitializingBean SendCarroDataBase(){
 		carro car = new carro();
@@ -33,6 +46,8 @@ public class EcomerceApplication {
 		car.setModelo("GT");
 		car.setCor("Azul");
 		car.setPlaca("OTA3060");
+		car.setAnoVeiculo("2021");
+		car.setValorDiaria(130.00);
 		carroRepositorio.save(car);
 		return null;
 	}

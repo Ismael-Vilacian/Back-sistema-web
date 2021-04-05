@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 public class carro implements Serializable {
@@ -16,6 +17,8 @@ public class carro implements Serializable {
     private String modelo;
     private String cor;
     private String placa;
+    private String anoVeiculo;
+    private double valorDiaria;
 
     public carro() {
     }
@@ -58,5 +61,21 @@ public class carro implements Serializable {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    public String getAnoVeiculo() {
+        return anoVeiculo;
+    }
+
+    public void setAnoVeiculo(String anoVeiculo) {
+        this.anoVeiculo = anoVeiculo;
+    }
+
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public void setValorDiaria(double valorDiaria) {
+        this.valorDiaria = valorDiaria;
     }
 }

@@ -1,13 +1,12 @@
 package br.com.unialfa.ecomerce.cliente.domain;
 
+import br.com.unialfa.ecomerce.locacao.domain.locacao;
 import com.sun.istack.Nullable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class cliente implements Serializable {
@@ -17,10 +16,15 @@ public class cliente implements Serializable {
     private int idUser;
     @Nullable()
     private String nome;
+    @Nullable()
+    @Column(unique = true)
     private String cpf;
     private char sexo;
     private LocalDate dataNascimento;
     private int versao;
+
+    @OneToMany
+    private List<locacao> locacao;
 
     public cliente() {
     }
@@ -71,5 +75,13 @@ public class cliente implements Serializable {
 
     public void setVersao(int versao) {
         this.versao = versao;
+    }
+
+    public List<br.com.unialfa.ecomerce.locacao.domain.locacao> getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(List<br.com.unialfa.ecomerce.locacao.domain.locacao> locacao) {
+        this.locacao = locacao;
     }
 }
