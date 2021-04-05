@@ -10,26 +10,29 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/cliente")
 public class clienteController {
 
+
     @Autowired
-    private clienteRepositorio clienteRep;
+    private clienteRepositorio clienteRepositorio;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<cliente> listarCliente(){
-        return clienteRep.findAll();
+        return clienteRepositorio.findAll();
     }
 
     @PostMapping(path = "/add")
-    public void cadastrarCliente(@RequestBody cliente clienteVariavel){
-        clienteRep.save(clienteVariavel);
+    public void cadastrarCliente( @RequestBody cliente cliente ){
+        clienteRepositorio.save(cliente);
     }
 
     @PutMapping(path = "/edit")
-    public void editarCliente(@RequestBody cliente clienteVariavel){
-        clienteRep.save(clienteVariavel);
+    public void editarCliente( @RequestBody cliente cliente ){
+        clienteRepositorio.save(cliente);
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public @ResponseBody void deletarCliente(@PathVariable(name = "id") long id){
-        clienteRep.deleteById(id);
+        clienteRepositorio.deleteById(id);
     }
+
+
 }

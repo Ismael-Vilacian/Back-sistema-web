@@ -14,9 +14,7 @@ public class cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
-    @Nullable()
     private String nome;
-    @Nullable()
     @Column(unique = true)
     private String cpf;
     private char sexo;
