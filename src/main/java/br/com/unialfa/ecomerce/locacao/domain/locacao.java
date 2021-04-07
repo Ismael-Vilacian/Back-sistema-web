@@ -14,14 +14,21 @@ public class locacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private LocalDate dataPedido;
-    private LocalDate dataRetirada;
-    private LocalDate dataDevolucao;
+    private double valorTotal;
 
     @Column(nullable = false)
     private BigDecimal valorAluguel;
 
+    public br.com.unialfa.ecomerce.cliente.domain.cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(br.com.unialfa.ecomerce.cliente.domain.cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @ManyToOne
-    private cliente clienteVar;
+    private cliente cliente;
 
     public locacao() {
     }
@@ -42,20 +49,12 @@ public class locacao implements Serializable {
         this.dataPedido = dataPedido;
     }
 
-    public LocalDate getDataRetirada() {
-        return dataRetirada;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setDataRetirada(LocalDate dataRetirada) {
-        this.dataRetirada = dataRetirada;
-    }
-
-    public LocalDate getDataDevolucao() {
-        return dataDevolucao;
-    }
-
-    public void setDataDevolucao(LocalDate dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public BigDecimal getValorAluguel() {
@@ -64,13 +63,5 @@ public class locacao implements Serializable {
 
     public void setValorAluguel(BigDecimal valorAluguel) {
         this.valorAluguel = valorAluguel;
-    }
-
-    public cliente getClienteVar() {
-        return clienteVar;
-    }
-
-    public void setClienteVar(cliente clienteVar) {
-        this.clienteVar = clienteVar;
     }
 }

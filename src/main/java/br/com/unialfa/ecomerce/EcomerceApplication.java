@@ -7,6 +7,8 @@ import br.com.unialfa.ecomerce.carro.repositorio.carroRepositorio;
 import br.com.unialfa.ecomerce.cliente.domain.cliente;
 import br.com.unialfa.ecomerce.cliente.repositorio.clienteRepositorio;
 import br.com.unialfa.ecomerce.cliente.service.clienteController;
+import br.com.unialfa.ecomerce.locacao.domain.locacao;
+import br.com.unialfa.ecomerce.locacao.repositorio.locacaoRepositorio;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -27,20 +29,29 @@ public class EcomerceApplication {
 	@Autowired
 	private admRepositorio admRepositorio;
 
+	@Autowired
+	private locacaoRepositorio locacaoRepositorio;
+
 	public static void main(String[] args) {
 		SpringApplication.run(EcomerceApplication.class, args);
 
 	}
+	/*
 	@Bean
-	InitializingBean SendAdmDataBase(){
-		adm admAcesso = new adm();
-		admAcesso.setNome("Ismael");
-		admRepositorio.save(admAcesso);
+	InitializingBean SendDataBase(){
+		cliente cli = new cliente();
+		cli.setNome("Ismael Gomes");
+		cli.setCpf("111.111.111-11");
+		cli.setSexo('M');
+		cli.setVersao(1);
+		cli.setDataNascimento(LocalDate.now());
+		clienteRepositorio.save(cli);
+
 		return null;
 	}
 
 	@Bean
-	InitializingBean SendCarroDataBase(){
+	InitializingBean SendCarDataBase(){
 		carro car = new carro();
 		car.setMarca("BMW");
 		car.setModelo("GT");
@@ -53,15 +64,21 @@ public class EcomerceApplication {
 	}
 
 	@Bean
-	InitializingBean SendClienteDataBase(){
-		cliente cli = new cliente();
-		cli.setNome("Ismael Gomes");
-		cli.setCpf("111.111.111-11");
-		cli.setSexo('M');
-		cli.setVersao(1);
-		cli.setDataNascimento(LocalDate.now());
-		clienteRepositorio.save(cli);
+	InitializingBean SendAdmDataBase(){
+		adm admAcesso = new adm();
+		admAcesso.setNome("Ismael");
+		admRepositorio.save(admAcesso);
 		return null;
 	}
 
+	@Bean
+	InitializingBean SendLocacaoDataBase(){
+		locacao locacaoR = new locacao();
+		locacaoR.setValorTotal(550.00);
+		locacaoR.setDataPedido(LocalDate.now());
+		locacaoR.setId(0);
+		locacaoRepositorio.save(locacaoR);
+		return null;
+	}
+	*/
 }

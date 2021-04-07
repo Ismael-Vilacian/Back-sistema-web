@@ -1,7 +1,6 @@
 package br.com.unialfa.ecomerce.cliente.domain;
 
 import br.com.unialfa.ecomerce.locacao.domain.locacao;
-import com.sun.istack.Nullable;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -82,4 +81,5 @@ public class cliente implements Serializable {
     public void setLocacao(List<br.com.unialfa.ecomerce.locacao.domain.locacao> locacao) {
         this.locacao = locacao;
     }
+
 }
