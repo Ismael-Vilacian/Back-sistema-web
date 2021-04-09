@@ -4,7 +4,6 @@ import br.com.unialfa.ecomerce.cliente.domain.cliente;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -17,15 +16,8 @@ public class locacao implements Serializable {
     private double valorTotal;
 
     @Column(nullable = false)
-    private BigDecimal valorAluguel;
+    private double valorAluguel;
 
-    public br.com.unialfa.ecomerce.cliente.domain.cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(br.com.unialfa.ecomerce.cliente.domain.cliente cliente) {
-        this.cliente = cliente;
-    }
 
     @ManyToOne
     private cliente cliente;
@@ -57,11 +49,19 @@ public class locacao implements Serializable {
         this.valorTotal = valorTotal;
     }
 
-    public BigDecimal getValorAluguel() {
+    public double getValorAluguel() {
         return valorAluguel;
     }
 
-    public void setValorAluguel(BigDecimal valorAluguel) {
+    public void setValorAluguel(double valorAluguel) {
         this.valorAluguel = valorAluguel;
+    }
+
+    public cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(cliente cliente) {
+        this.cliente = cliente;
     }
 }

@@ -1,6 +1,7 @@
 package br.com.unialfa.ecomerce.cliente.domain;
 
 import br.com.unialfa.ecomerce.locacao.domain.locacao;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,7 +14,9 @@ public class cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
+    @NonNull
     private String nome;
+    @NonNull
     @Column(unique = true)
     private String cpf;
     private char sexo;

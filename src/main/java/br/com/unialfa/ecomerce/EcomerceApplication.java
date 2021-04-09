@@ -36,7 +36,7 @@ public class EcomerceApplication {
 		SpringApplication.run(EcomerceApplication.class, args);
 
 	}
-	/*
+
 	@Bean
 	InitializingBean SendDataBase(){
 		cliente cli = new cliente();
@@ -71,14 +71,15 @@ public class EcomerceApplication {
 		return null;
 	}
 
+
 	@Bean
 	InitializingBean SendLocacaoDataBase(){
 		locacao locacaoR = new locacao();
 		locacaoR.setValorTotal(550.00);
 		locacaoR.setDataPedido(LocalDate.now());
-		locacaoR.setId(0);
+		locacaoR.setCliente(null);
 		locacaoRepositorio.save(locacaoR);
 		return null;
 	}
-	*/
+
 }
