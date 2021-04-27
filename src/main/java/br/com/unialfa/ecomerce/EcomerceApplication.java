@@ -36,7 +36,6 @@ public class EcomerceApplication {
 		SpringApplication.run(EcomerceApplication.class, args);
 
 	}
-
 	@Bean
 	InitializingBean SendDataBase(){
 		cliente cli = new cliente();
