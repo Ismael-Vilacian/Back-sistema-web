@@ -6,7 +6,6 @@ import br.com.unialfa.ecomerce.carro.domain.carro;
 import br.com.unialfa.ecomerce.carro.repositorio.carroRepositorio;
 import br.com.unialfa.ecomerce.cliente.domain.cliente;
 import br.com.unialfa.ecomerce.cliente.repositorio.clienteRepositorio;
-import br.com.unialfa.ecomerce.cliente.service.clienteController;
 import br.com.unialfa.ecomerce.locacao.domain.locacao;
 import br.com.unialfa.ecomerce.locacao.repositorio.locacaoRepositorio;
 import org.springframework.beans.factory.InitializingBean;
@@ -80,5 +79,4 @@ public class EcomerceApplication {
 		locacaoRepositorio.save(locacaoR);
 		return null;
 	}
-
 }

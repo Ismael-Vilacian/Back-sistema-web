@@ -3,8 +3,11 @@ package br.com.unialfa.ecomerce.cliente.business;
 import br.com.unialfa.ecomerce.cliente.domain.cliente;
 import br.com.unialfa.ecomerce.cliente.repositorio.clienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
 import java.util.InputMismatchException;
 
 @Service
@@ -22,7 +25,8 @@ public class clienteBusiness {
         if (validaCpf(cliente.getCpf())) {
             clienteRepositorio.save(cliente);
         } else{
-            System.out.println("CPF invalida");
+            System.err.println("CPF invalido");
+            //throw new Exception(Exception e);
         }
     }
 

@@ -4,7 +4,9 @@ import br.com.unialfa.ecomerce.cliente.business.clienteBusiness;
 import br.com.unialfa.ecomerce.cliente.domain.cliente;
 import br.com.unialfa.ecomerce.cliente.repositorio.clienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -24,9 +26,14 @@ public class clienteController {
     }
 
     @PostMapping(path = "/add")
-    public void cadastrarCliente( @RequestBody cliente cliente ){
+    public ResponseEntity<?> cadastrarCliente(@RequestBody cliente cliente ){
+        try {
+            clienteBusiness.cadastrarCliente(cliente);
+            return new ResponseEntity<>(cliente, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(cliente, HttpStatus.BAD_REQUEST);
+        }
 
-        clienteBusiness.cadastrarCliente(cliente);
     }
 
     @PutMapping(path = "/edit")
