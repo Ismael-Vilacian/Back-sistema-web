@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+
 
 import java.util.Optional;
 
@@ -23,6 +26,11 @@ public class clienteController {
     public Iterable<cliente> listarCliente(){
 
         return clienteBusiness.listarCliente();
+    }
+
+    @GetMapping(value = "/{idUser}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<cliente> clientePorid(@PathVariable(name = "idUser") int idUser){
+        return clienteBusiness.clientePorId(idUser);
     }
 
     @PostMapping(path = "/add")
@@ -42,9 +50,9 @@ public class clienteController {
         clienteBusiness.editarCliente(cliente);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public @ResponseBody void deletarCliente(@PathVariable(name = "id") long id){
-        clienteBusiness.deletarCliente(id);
+    @DeleteMapping(value = "/delete/{idUser}")
+    public @ResponseBody void deletarCliente(@PathVariable(name = "idUser") int idUser){
+        clienteBusiness.deletarCliente(idUser);
     }
 
 

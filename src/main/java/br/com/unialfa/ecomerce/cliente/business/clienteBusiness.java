@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import java.util.Optional;
 
 import java.util.InputMismatchException;
 
@@ -19,6 +20,11 @@ public class clienteBusiness {
     public Iterable<cliente> listarCliente()
     {
         return clienteRepositorio.findAll();
+    }
+
+    public Optional<cliente> clientePorId(long id)
+    {
+        return clienteRepositorio.findById(id);
     }
 
     public void cadastrarCliente( cliente cliente ) {

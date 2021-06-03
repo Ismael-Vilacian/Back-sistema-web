@@ -13,7 +13,7 @@ public class cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUser;
+    private long idUser;
     @NonNull
     private String nome;
     @NonNull
@@ -53,11 +53,11 @@ public class cliente implements Serializable {
         this.sexo = sexo;
     }
 
-    public int getIdUser() {
+    public long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(long idUser) {
         this.idUser = idUser;
     }
 
