@@ -51,7 +51,7 @@ public class clienteController {
     }
 
     @DeleteMapping(value = "/delete/{idUser}")
-    public @ResponseBody void deletarCliente(@PathVariable(name = "idUser") int idUser){
+    public void deletarCliente(@PathVariable(name = "idUser") long idUser){
         clienteBusiness.deletarCliente(idUser);
     }
 
