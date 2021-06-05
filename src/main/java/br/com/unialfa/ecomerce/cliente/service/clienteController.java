@@ -43,17 +43,30 @@ public class clienteController {
         }
 
     }
-
+    //@PutMapping(path = "/edit")
+    //public ResponseEntity<?> editarCliente( @RequestBody cliente cliente ){
+        //try {
+            //clienteBusiness.editarCliente(cliente);
+            //return new ResponseEntity<>(cliente, HttpStatus.OK);
+        //}catch (Exception e){
+          //  return new ResponseEntity<>(cliente, HttpStatus.BAD_REQUEST);
+       // }
+    //}
     @PutMapping(path = "/edit")
     public void editarCliente( @RequestBody cliente cliente ){
-
         clienteBusiness.editarCliente(cliente);
     }
 
-    @DeleteMapping(value = "/delete/{idUser}")
-    public void deletarCliente(@PathVariable(name = "idUser") long idUser){
-        clienteBusiness.deletarCliente(idUser);
-    }
 
+    @PostMapping(path = "/delete")
+    public ResponseEntity<?> deletarClientes(@RequestBody cliente cliente ){
+        try {
+            clienteBusiness.deletarCliente(cliente.getIdUser());
+            return new ResponseEntity<>(cliente, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(cliente, HttpStatus.BAD_REQUEST);
+        }
+
+    }
 
 }
