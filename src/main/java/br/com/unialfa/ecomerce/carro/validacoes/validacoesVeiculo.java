@@ -20,11 +20,13 @@ public class validacoesVeiculo {
     }
 
     public void cadastrarVeiculo(carro carro) {
-        if (validaVeiculo(carro.getPlaca())) {
+        carroRepositorio.save(carro);
+        /*if (validaVeiculo(carro.getPlaca())) {
             carroRepositorio.save(carro);
         } else {
             System.out.println("Placa Invalida");
         }
+        */
     }
 
     public void editarVeiculo( carro carro ){
