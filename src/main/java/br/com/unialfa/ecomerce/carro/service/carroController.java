@@ -4,8 +4,12 @@ import br.com.unialfa.ecomerce.carro.domain.carro;
 import br.com.unialfa.ecomerce.carro.repositorio.carroRepositorio;
 import br.com.unialfa.ecomerce.carro.validacoes.validacoesVeiculo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/carro")
@@ -22,6 +26,11 @@ public class carroController {
         return validacoesVeiculo.listarVeiculos();
     }
 
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<carro> carroPorId(@PathVariable(name = "id") long id){
+        return validacoesVeiculo.carroPorId(id);
+    }
+
     @PostMapping(path = "/add")
     public void cadastrarCarro(@RequestBody carro carroVariavel){
         validacoesVeiculo.cadastrarVeiculo(carroVariavel);
@@ -32,9 +41,15 @@ public class carroController {
         validacoesVeiculo.editarVeiculo(carroVariavel);
     }
 
-    @DeleteMapping(value = "/delete/{id}")
-    public @ResponseBody void deletarCarro(@PathVariable(name = "id") long id){
-        validacoesVeiculo.deletarVeiculo(id);
-    }
+    @PostMapping(path = "/delete")
+    public ResponseEntity<?> deletarCarro(@RequestBody carro Carro ){
+        try {
+            validacoesVeiculo.deletarVeiculo(Carro.getId());
+            System.out.println(Carro.getId());
+            return new ResponseEntity<>(Carro, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(Carro, HttpStatus.BAD_REQUEST);
+        }
 
+    }
 }

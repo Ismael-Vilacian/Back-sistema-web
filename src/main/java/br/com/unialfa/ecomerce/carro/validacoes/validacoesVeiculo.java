@@ -2,6 +2,7 @@ package br.com.unialfa.ecomerce.carro.validacoes;
 
 import br.com.unialfa.ecomerce.carro.domain.carro;
 import br.com.unialfa.ecomerce.carro.repositorio.carroRepositorio;
+import br.com.unialfa.ecomerce.cliente.domain.cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class validacoesVeiculo {
@@ -27,6 +29,11 @@ public class validacoesVeiculo {
             System.out.println("Placa Invalida");
         }
         */
+    }
+
+    public Optional<carro> carroPorId(long id)
+    {
+        return carroRepositorio.findById(id);
     }
 
     public void editarVeiculo( carro carro ){
